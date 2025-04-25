@@ -1,10 +1,11 @@
-#pragma once;
-
+#pragma once
+#include <raylib.h>
 
 class Spaceship
 {
 private:
-  /* data */
+ Texture2D image;
+ Vector2 position;
 public:
   Spaceship(/* args */);
   ~Spaceship();
@@ -13,11 +14,3 @@ public:
   void MoveRight();
   void FireLaser();
 };
-
-spaceship::spaceship(/* args */)
-{
-}
-
-spaceship::~spaceship()
-{
-}
