@@ -1,5 +1,6 @@
 #include <raylib.h>
-#include "spaceship.hpp"
+#include "game.hpp"
+#include "laser.hpp"
 
 int main() 
 {
@@ -11,15 +12,21 @@ int main()
     InitWindow(windowWidth, windowHeight, "C++ Space Invaders");
     SetTargetFPS(60);
 
-    Spaceship spaceship;
+    Game game;
+    Laser laser = Laser({100,100},7);
     
     while (!WindowShouldClose())
     {
 
+        // Update
+        game.HandleInput();
+
+        // Draw
         BeginDrawing();
             ClearBackground(grey);
 
-            spaceship.Draw();
+            game.Draw();
+            laser.Draw();
         
         EndDrawing();
     }

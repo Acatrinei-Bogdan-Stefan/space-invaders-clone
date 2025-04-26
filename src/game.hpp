@@ -5,20 +5,14 @@
 class Game
 {
 private:
-  /* data */
+  Spaceship spaceship;
 public:
-  Game(/* args */);
+  Game();
   ~Game();
   void Draw();
   void Update();
   void HandleInput();
 };
 
-Game::Game(/* args */)
-{
-}
 
-Game::~Game()
-{
-}
  
