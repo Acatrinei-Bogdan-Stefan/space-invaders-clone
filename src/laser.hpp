@@ -1,6 +1,6 @@
 #pragma once
 #include <raylib.h>
-#include "spaceship.hpp"
+
 
 class Laser
 {
@@ -11,6 +11,7 @@ public:
     Laser(Vector2 position, int speed);
     void Update();
     void Draw();
+    bool active;
 };
 
 
