@@ -2,6 +2,7 @@
 #include "game.hpp"
 
 
+
 int main() 
 {
     const Color grey = {29, 29, 27, 255};
@@ -13,7 +14,7 @@ int main()
     SetTargetFPS(60);
 
     Game game;
- 
+    
     
     while (!WindowShouldClose())
     {
@@ -27,6 +28,7 @@ int main()
             ClearBackground(grey);
 
             game.Draw();
+            
       
         
         EndDrawing();
