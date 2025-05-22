@@ -11,7 +11,7 @@ public:
   void Draw();
   std::vector<Block> blocks;
   Vector2 position;
-  std::vector<std::vector<int>> grid;
+  static std::vector<std::vector<int>> grid;
 };
 
 

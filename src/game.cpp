@@ -62,3 +62,8 @@ void Game::DeleteInactiveLasers()
         }
     }   
 }
+
+std::vector<Obstacle> Game::CreateObstacle()
+{
+  
+}
