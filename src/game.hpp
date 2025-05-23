@@ -7,7 +7,7 @@ class Game
 {
 private:
   std::vector<Obstacle> CreateObstacle();
-  std::vector<Obstacle> obstacle;
+  std::vector<Obstacle> obstacles;
   Spaceship spaceship;
   void DeleteInactiveLasers();
 public:
