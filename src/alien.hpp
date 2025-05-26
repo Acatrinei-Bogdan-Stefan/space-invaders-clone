@@ -1,13 +1,14 @@
 #pragma once
 #include <raylib.h>
 
-class Alian
+class Alien
 {
 private:
   /* data */
 public:
-  Alian(int type, Vector2 position);
+  Alien(int type, Vector2 position);
   void Draw();
+  int GetType();
   Texture image;
   int type;
   Vector2 position;
