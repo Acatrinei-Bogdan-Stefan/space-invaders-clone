@@ -96,6 +96,7 @@ std::vector<Alien> Game::CreateAliens()
         {
 
             int alienType;
+
             if(row == 0)
             {
                 alienType = 3;
@@ -103,7 +104,7 @@ std::vector<Alien> Game::CreateAliens()
             else if (row == 1 || row == 2)
             {
                 alienType = 2;
-            }
+            } 
             else
             {
                 alienType = 1;

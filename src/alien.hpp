@@ -9,8 +9,8 @@ public:
   Alien(int type, Vector2 position);
   void Draw();
   int GetType();
-  Texture image;
-  int type;
+  static Texture2D alienImages[3];   
+  int type;  
   Vector2 position;
 };
 
