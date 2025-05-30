@@ -9,10 +9,12 @@ class Game
 private:
   std::vector<Obstacle> CreateObstacle();
   std::vector<Alien> CreateAliens();
+  void MoveAliens();
   std::vector<Obstacle> obstacles;
   std::vector<Alien> aliens;
   Spaceship spaceship;
   void DeleteInactiveLasers();
+  int aliensDirection = 1;
 public:
   Game();
   ~Game();

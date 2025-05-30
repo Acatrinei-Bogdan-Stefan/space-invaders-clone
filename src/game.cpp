@@ -9,7 +9,7 @@ Game::Game()
 
 Game::~Game()
 {
-
+ Alien::UnloadImages();
 }
 
 void Game::Update()
@@ -116,4 +116,12 @@ std::vector<Alien> Game::CreateAliens()
         }
     }
     return aliens;
+}
+
+void Game::MoveAliens()
+{
+    for(auto& alien: aliens)
+    {
+        alien.Update(aliensDirection);
+    }
 }
