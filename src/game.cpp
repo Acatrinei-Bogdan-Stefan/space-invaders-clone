@@ -5,6 +5,8 @@ Game::Game()
 {
     obstacles = CreateObstacle();
     aliens = CreateAliens();
+    aliensDirection = 1;
+    timeLastAlienFired = 0.0;
 }
 
 Game::~Game()
@@ -15,6 +17,15 @@ Game::~Game()
 void Game::Update()
 {
     for(auto& laser: spaceship.lasers)
+    {
+        laser.Update();
+    }
+
+    MoveAliens();
+
+    AlienShootLaser();
+
+    for(auto& laser: alienLasers)
     {
         laser.Update();
     }
@@ -40,6 +51,12 @@ void Game::Draw()
     {
         alien.Draw();
     }
+
+    for(auto& laser: alienLasers)
+    {
+        laser.Draw();
+    }
+
 }
 
 void Game::HandleInput()
@@ -66,6 +83,18 @@ void Game::DeleteInactiveLasers()
         if(!it -> active)
         {
             it = spaceship.lasers.erase(it);
+        }
+        else
+        {
+            ++ it;
+        }
+    }   
+
+    for(auto it = alienLasers.begin(); it != alienLasers.end();)
+    {
+        if(!it -> active)
+        {
+            it = alienLasers.erase(it);
         }
         else
         {
@@ -122,6 +151,38 @@ void Game::MoveAliens()
 {
     for(auto& alien: aliens)
     {
+
+        if(alien.position.x + alien.alienImages[alien.type - 1].width > GetScreenWidth())
+        {
+            aliensDirection = -1;
+            MoveDownAliens(4);
+        }
+        if(alien.position.x < 0)
+        {
+            aliensDirection = 1;
+            MoveDownAliens(4);
+        }
+
         alien.Update(aliensDirection);
+    }
+}
+
+void Game::MoveDownAliens(int distance)
+{
+     for(auto& alien: aliens)
+     {
+        alien.position.y += distance; 
+     }
+}
+
+void Game::AlienShootLaser()
+{
+    double currentTime = GetTime();
+    if(currentTime - timeLastAlienFired >= alienLaserShootInterval && !aliens.empty()){
+        int randomIndex = GetRandomValue(0, aliens.size() - 1);
+        Alien& alien = aliens[randomIndex];
+        alienLasers.push_back(Laser({alien.position.x + alien.alienImages[alien.type -1].width/2,
+                                    alien.position.y + alien.alienImages[alien.type - 1].height},6));
+        timeLastAlienFired = GetTime();
     }
 }
