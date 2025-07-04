@@ -24,4 +24,20 @@ void MysteryShip::Spawn()
     position.x = GetScreenWidth() - image.width;
     speed = -3;
   }
+  alive = true;
+}
+
+void MysteryShip::Update(){
+  if(alive){
+    position.x += speed;
+    if(position.x > GetScreenWidth() - image.width || position.x < 0)
+    {
+      alive = false;
+    }
+  }
+}
+
+void MysteryShip::Draw()
+{
+  DrawTextureV(image, position, WHITE);
 }

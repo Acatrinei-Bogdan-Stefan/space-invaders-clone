@@ -7,6 +7,7 @@ Game::Game()
     aliens = CreateAliens();
     aliensDirection = 1;
     timeLastAlienFired = 0.0;
+    mysteryship.Spawn();
 }
 
 Game::~Game()
@@ -31,6 +32,7 @@ void Game::Update()
     }
 
     DeleteInactiveLasers();
+    mysteryship.Update();
 }
 
 void Game::Draw()
@@ -56,6 +58,8 @@ void Game::Draw()
     {
         laser.Draw();
     }
+
+    mysteryship.Draw();
 
 }
 
