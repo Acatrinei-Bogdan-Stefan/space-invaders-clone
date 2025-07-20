@@ -18,7 +18,9 @@ Game::~Game()
 
 void Game::Update()
 {
+
     double currentTime = GetTime();
+
     if(currentTime - timeLastSpawn > mysteryShipSpawnInterval)
     {
         mysteryship.Spawn();
@@ -197,5 +199,14 @@ void Game::AlienShootLaser()
         alienLasers.push_back(Laser({alien.position.x + alien.alienImages[alien.type -1].width/2,
                                     alien.position.y + alien.alienImages[alien.type - 1].height},6));
         timeLastAlienFired = GetTime();
+    }
+}
+
+void Game::CheckForColision()
+{
+    //Spaceship Lasers
+    for(auto& laser: spaceship.lasers)
+    {
+        
     }
 }
